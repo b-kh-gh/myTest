@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title" *ngIf="product">
+      Product Detail:{{ product.productName }}
+    </h5>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-3">Name:</div>
+          <div class="col-md-9">{{ product.productName }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Product code:</div>
+          <div class="col-md-9">
+            {{ product.productCode }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Description:</div>
+          <div class="col-md-9">{{ product.description }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Availablility</div>
+          <div class="col-md-9">{{ product.releaseDate }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Price:</div>
+            <div class="col-md-6">{{product.price|currency:"USD":"symbol"}}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">5 star Rating:</div>
+          <div class="col-md-9">
+            <app-star [rating]="product.starRating"></app-star>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Tags:</div>
+          <div class="col-md-6">{{ product.tags }}</div>
+        </div>
+        <div class="col-md-4" *ngIf="product.imageUrl">
+          <img
+            class="center-block img-responsive"
+            [style.height.px]="150"
+            [style.margin.px]="2"
+            [src]="product.imageUrl"
+            [title]="product.productName"
+          />
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <button
+              class="btn btn-outline-secondary mr-3"
+              style="width: 80px"
+              (click)="onBack()"
+            >
+              <i class="fa fa-chevron-left"></i> Back
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              style="width: 80px"
+              [routerLink]="['/products', product.id, 'edit']"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+"
